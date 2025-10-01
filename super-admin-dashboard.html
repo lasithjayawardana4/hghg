@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Super Admin Dashboard - LT Innovations</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#eca413",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221c10",
+                    },
+                    fontFamily: {
+                        display: ["Manrope"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181611] dark:text-background-light">
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-background-light dark:bg-background-dark flex flex-col border-r border-primary/20 dark:border-primary/30">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded-full"></div>
+                <h1 class="text-lg font-bold text-[#181611] dark:text-white">LT Innovations</h1>
+            </div>
+            <nav class="flex-1 px-4 py-2 space-y-2">
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary/10 text-primary font-bold" href="#" onclick="loadPage('dashboard')">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#181611]/80 dark:text-white/80 hover:bg-primary/10 hover:text-primary transition-colors" href="#" onclick="loadPage('shops')">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96v16a40,40,0,0,0,16,32v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V144a40,40,0,0,0,16-32ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"></path>
+                    </svg>
+                    <span>Shop Management</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#181611]/80 dark:text-white/80 hover:bg-primary/10 hover:text-primary transition-colors" href="#" onclick="loadPage('active-shops')">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                    </svg>
+                    <span>Active Shops</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#181611]/80 dark:text-white/80 hover:bg-primary/10 hover:text-primary transition-colors" href="#" onclick="loadPage('blocked-shops')">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                    </svg>
+                    <span>Blocked Shops</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#181611]/80 dark:text-white/80 hover:bg-primary/10 hover:text-primary transition-colors" href="#" onclick="loadPage('messaging')">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"></path>
+                    </svg>
+                    <span>Messaging</span>
+                </a>
+            </nav>
+            <div class="p-4 mt-auto">
+                <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#181611]/80 dark:text-white/80 hover:bg-primary/10 hover:text-primary transition-colors" href="#" onclick="logout()">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+                    </svg>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <main class="flex-1">
+            <header class="flex items-center justify-between p-6 border-b border-primary/20 dark:border-primary/30">
+                <h2 class="text-2xl font-bold text-[#181611] dark:text-white">Welcome back, Super Admin</h2>
+                <div class="flex items-center gap-4">
+                    <button class="relative p-2 rounded-full hover:bg-primary/10 transition-colors">
+                        <svg class="text-[#181611] dark:text-white" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+                        </svg>
+                        <span class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-primary ring-2 ring-background-light dark:ring-background-dark"></span>
+                    </button>
+                    <div class="w-10 h-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5HVMuK6DpaCJv4zrqSqSU_q4LWakBm860Ov6LdFLuyK9eVlruWU7yaw5314Lip-jYLg748d_xAL0mXoV5bolpfudI_mXw7IkzzmnAbL26Kme4l2rXPcsV9a063IckC8R6sb8TVFWWM3P_5-GUjvaQ6uLc8ierSbEPLeUFDWrGPSJcmdx8n2FTbhEFNKFcaYySQyOoUJdNdVabdNJOVjWgPCpZF7QHSp_6knnUoEwdcxmCGvwCxGiDFpSdHYIVZdM_Pams-QO-eITw");'></div>
+                </div>
+            </header>
+            <div class="p-6" id="main-content">
+                <!-- Dashboard content will be loaded here -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gradient-to-br from-primary/80 to-primary p-6 rounded-xl shadow-lg text-white">
+                        <h3 class="text-base font-medium">Total Shops</h3>
+                        <p class="text-3xl font-bold">120</p>
+                    </div>
+                    <div class="bg-white dark:bg-[#181611]/50 p-6 rounded-xl shadow-sm border border-primary/20 dark:border-primary/30">
+                        <h3 class="text-base font-medium text-[#181611] dark:text-white">Active Shops</h3>
+                        <p class="text-3xl font-bold text-primary">110</p>
+                    </div>
+                    <div class="bg-white dark:bg-[#181611]/50 p-6 rounded-xl shadow-sm border border-primary/20 dark:border-primary/30">
+                        <h3 class="text-base font-medium text-[#181611] dark:text-white">Blocked Shops</h3>
+                        <p class="text-3xl font-bold text-primary">10</p>
+                    </div>
+                    <div class="bg-white dark:bg-[#181611]/50 p-6 rounded-xl shadow-sm border border-primary/20 dark:border-primary/30">
+                        <h3 class="text-base font-medium text-[#181611] dark:text-white">Login Activity</h3>
+                        <p class="text-xl font-bold text-primary">24h ago</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                    <div class="lg:col-span-2 bg-white dark:bg-[#181611]/50 p-6 rounded-xl shadow-sm border border-primary/20 dark:border-primary/30">
+                        <h3 class="text-xl font-bold mb-4 text-[#181611] dark:text-white">Recent Activity</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-primary/10 rounded-full p-3">
+                                    <svg class="text-primary" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96v16a40,40,0,0,0,16,32v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V144a40,40,0,0,0,16-32ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-[#181611] dark:text-white">Golden Treasures</p>
+                                    <p class="text-sm text-[#181611]/70 dark:text-white/70">Shop Login</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="bg-primary/10 rounded-full p-3">
+                                    <svg class="text-primary" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96v16a40,40,0,0,0,16,32v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V144a40,40,0,0,0,16-32ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-[#181611] dark:text-white">Sparkling Gems</p>
+                                    <p class="text-sm text-[#181611]/70 dark:text-white/70">Shop Login</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="bg-primary/10 rounded-full p-3">
+                                    <svg class="text-primary" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96v16a40,40,0,0,0,16,32v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V144a40,40,0,0,0,16-32ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-[#181611] dark:text-white">Diamond Dreams</p>
+                                    <p class="text-sm text-[#181611]/70 dark:text-white/70">Shop Login</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-[#181611]/50 p-6 rounded-xl shadow-sm border border-primary/20 dark:border-primary/30">
+                        <h3 class="text-xl font-bold mb-4 text-[#181611] dark:text-white">Quick Shortcuts</h3>
+                        <div class="space-y-3">
+                            <button class="w-full text-left py-3 px-4 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors" onclick="loadPage('shops')">Shop Management</button>
+                            <button class="w-full text-left py-3 px-4 bg-primary/10 text-primary dark:text-primary rounded-lg font-bold hover:bg-primary/20 transition-colors" onclick="loadPage('active-shops')">Active Shops</button>
+                            <button class="w-full text-left py-3 px-4 bg-primary/10 text-primary dark:text-primary rounded-lg font-bold hover:bg-primary/20 transition-colors" onclick="loadPage('messaging')">Messaging</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="text-center py-6 px-6 text-[#181611]/60 dark:text-white/60 text-sm">© LT Innovations 2025. All Rights Reserved.</footer>
+        </main>
+    </div>
+
+    <script src="super-admin-script.js"></script>
+</body>
+</html>

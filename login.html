@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LT Innovations - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>LT Innovations</h1>
+                <p>Jewelry Shop POS System</p>
+            </div>
+            
+            <form class="login-form" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="shopId">Shop ID</label>
+                    <input type="text" id="shopId" name="shopId" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="login-options">
+                <button type="button" class="super-admin-btn" onclick="showSuperAdminLogin()">
+                    <span class="material-symbols-outlined">admin_panel_settings</span>
+                    Super Admin Login
+                </button>
+            </div>
+            
+            <div class="demo-credentials">
+                <h3>Demo Credentials</h3>
+                <p><strong>Shop ID:</strong> demo</p>
+                <p><strong>Password:</strong> password</p>
+            </div>
+            
+            <div class="login-footer">
+                <p>© LT Innovations 2025. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+            
+            const shopId = document.getElementById('shopId').value;
+            const password = document.getElementById('password').value;
+            
+            // Demo credentials
+            if (shopId === 'demo' && password === 'password') {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('userName', 'Demo Admin');
+                sessionStorage.setItem('userType', 'shop');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid credentials. Please use:\nShop ID: demo\nPassword: password');
+            }
+        }
+        
+        function showSuperAdminLogin() {
+            window.location.href = 'super-admin-login.html';
+        }
+    </script>
+</body>
+</html>
